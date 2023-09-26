@@ -9,7 +9,7 @@ public protocol AdapterDelegate: class {
     func select(model: Any)
     
     /// Size the view
-    func size(model: Any, containerSize: CGSize) -> CGSize
+    func size(model: Any, containerSize: CGSize) -> CGSize?
 }
 
 

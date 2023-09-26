@@ -179,21 +179,3 @@ class MenuViewController: UIViewController, UICollectionViewDataSource, UICollec
     
 
 }
-
-
-extension MenuViewController {
-    
-    func configure(model: Any, view: UIView, indexPath: IndexPath) {
-        
-        
-    }
-    
-    func select(model: Any) {
-        
-    }
-    
-    func size(model: Any, containerSize: CGSize) -> CGSize {
-        return CGSize(width: 100, height: 100)
-    }
-    
-}
