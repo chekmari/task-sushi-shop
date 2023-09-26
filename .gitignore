@@ -51,7 +51,6 @@ export-options.plist
 Pods/
 
 # Xcode
-*.xcodeproj
 !*.xcodeproj/xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
 
@@ -78,7 +77,6 @@ DerivedData/
 *.enc
 
 # Xcode #
-# .xcodeproj (Xcode project)
 # .xcworkspace (Xcode workspace)
 # xcuserdata (Xcode user data)
 
