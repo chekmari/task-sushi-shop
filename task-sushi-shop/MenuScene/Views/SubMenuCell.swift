@@ -10,7 +10,7 @@ import UIKit
 class SubMenuCell: UICollectionViewCell {
     
     private var name = UILabel()
-    private var sostav = UILabel()
+    private var сomposition = UILabel()
     private var cost = UILabel()
     private let imageView = UIImageView()
     private let button = UIButton()
@@ -25,17 +25,17 @@ class SubMenuCell: UICollectionViewCell {
         name.text = "name"
         name.textAlignment = .center
         
-        sostav.text = "sostav"
-        sostav.textAlignment = .center
+        сomposition.text = "sostav"
+        сomposition.textAlignment = .center
         
         cost.text = "cost"
         cost.textAlignment = .center
         
         imageView.image = UIImage(named: "logo")
+        imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
         imageView.layer.borderWidth = 0.5
         imageView.layer.borderColor = UIColor.blue.cgColor
-        imageView.layer.frame = CGRect(x: 0, y: 0, width: 10, height: 10)
         
         
         button.setTitle("fsdfsdfds", for: .normal)
@@ -43,7 +43,7 @@ class SubMenuCell: UICollectionViewCell {
         button.layer.cornerRadius = 6
         
         addView(name)
-        addView(sostav)
+        addView(сomposition)
         addView(cost)
         addView(imageView)
         addView(button)
@@ -55,8 +55,8 @@ class SubMenuCell: UICollectionViewCell {
             make.height.equalToSuperview().dividedBy(8)
         }
         
-        sostav.layer.borderWidth = 0.3
-        sostav.snp.makeConstraints { make in
+        сomposition.layer.borderWidth = 0.3
+        сomposition.snp.makeConstraints { make in
             make.trailing.leading.equalToSuperview()
             make.top.equalTo(name.snp.bottom).inset(10)
             make.bottom.equalTo(cost.snp.top).inset(10)

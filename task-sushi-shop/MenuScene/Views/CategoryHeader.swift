@@ -2,16 +2,14 @@ import UIKit
 
 class CategoryHeader: UICollectionReusableView {
     
-    let label = UILabel()
+    let label = UILabel.headerText()
+    
+    static let headerId = "CategoryCell"
 
     override init(frame: CGRect) {
         super.init(frame: frame)
          
-         label.text = "Header Title"
-        label.textColor = Resources.SetColor.white()
-        label.font = UIFont(name: Resources.Fonts.arialBold.rawValue, size: 32)
-         addView(label)
-       
+        addView(label)
     }
 
     required init?(coder aDecoder: NSCoder) {

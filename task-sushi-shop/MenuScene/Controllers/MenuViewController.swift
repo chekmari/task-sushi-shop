@@ -7,86 +7,37 @@
 
 import UIKit
 
-class MenuViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if kind == UICollectionView.elementKindSectionHeader && indexPath.section == 1 {
-            let header = collectionView.dequeueReusableSupplementaryView(
-                ofKind: kind,
-                withReuseIdentifier: "CategoryHeader",
-                for: indexPath) as! CategoryHeader
-            // Настройте хедер для второй секции здесь
-            // Например, установите текст заголовка, изображение и т.д.
-            return header
-        } else {
-            
-            return UICollectionReusableView()
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        10
-    }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        2
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        if indexPath.section == 0 {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell",
-                                                              for: indexPath) as! CategoryCell
-                // Настройте ячейку для первой секции с использованием данных из dataForSection1
-                cell.configure(value: "Суши", image: Resources.setImage.logo()!, count: "4")
-                cell.layer.cornerRadius = 8
-                return cell
-            } else {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SubMenuCell
-                // Настройте ячейку для второй секции с использованием данных из dataForSection2
-                cell.backgroundColor = .white
-                cell.layer.cornerRadius = 8
-                
-                return cell
-            }
-        
-    }
-    
+class MenuViewController: UIViewController {
     
     let customNavigationView = CustomNavigationView()
-    
     private var categoryCollectionView: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = Resources.SetColor.mineShaft()
-        
-        setupCustomNavigationView()
-        
         
         categoryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
-        categoryCollectionView.backgroundColor = Resources.SetColor.mineShaft()
         
+        categoryCollectionView.backgroundColor = Resources.SetColor.mineShaft()
         categoryCollectionView.isScrollEnabled = true
+        
         categoryCollectionView.dataSource = self
         categoryCollectionView.delegate = self
-        categoryCollectionView.register(CategoryCell.self, forCellWithReuseIdentifier: "CategoryCell")
-        categoryCollectionView.register(SubMenuCell.self, forCellWithReuseIdentifier: "cell")
+        
+        
+        categoryCollectionView.register(CategoryCell.self,
+                                        forCellWithReuseIdentifier: CategoryCell.idCategoryCell)
+        categoryCollectionView.register(SubMenuCell.self, forCellWithReuseIdentifier: SubMenuCell.idSubMenuCell)
         categoryCollectionView.register(CategoryHeader.self,
                                         forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                        withReuseIdentifier: "CategoryHeader")
+                                        withReuseIdentifier: CategoryHeader.headerId)
         
+        
+        
+        view.backgroundColor = Resources.SetColor.mineShaft()
+        view.addView(customNavigationView)
         view.addView(categoryCollectionView)
-        
-        
-        categoryCollectionView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-            make.top.equalTo(customNavigationView.snp.bottom)
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-        }
-        
+        setConstraints()
+
         
     }
     
@@ -131,7 +82,7 @@ class MenuViewController: UIViewController, UICollectionViewDataSource, UICollec
             heightDimension: .absolute(260)
         )
 
-        let group2 = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize2, subitem: item2, count: 2) // Настройте количество элементов в ряду (count) по вашему желанию
+        let group2 = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize2, subitem: item2, count: 2)
         group2.interItemSpacing = .fixed(spacing2)
 
         let section2 = NSCollectionLayoutSection(group: group2)
@@ -139,11 +90,11 @@ class MenuViewController: UIViewController, UICollectionViewDataSource, UICollec
         section2.interGroupSpacing = spacing2
         
 
-        // Настройки хедера для второй секции (если он есть)
         let headerSize2 = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .estimated(20) // Здесь можно настроить высоту хедера
+            heightDimension: .estimated(20)
         )
+        
         let header2 = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize2,
             elementKind: UICollectionView.elementKindSectionHeader,
@@ -152,12 +103,11 @@ class MenuViewController: UIViewController, UICollectionViewDataSource, UICollec
     
         section2.boundarySupplementaryItems = [header2]
         
-        // Создание композиционной компоновки
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, _) -> NSCollectionLayoutSection? in
             if sectionIndex == 0 {
-                return section1 // Возвращаем первую секцию для первой секции
+                return section1
             } else {
-                return section2 // Возвращаем вторую секцию для второй секции
+                return section2
             }
         }
 
@@ -165,9 +115,70 @@ class MenuViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
 
     
-    private func setupCustomNavigationView() {
+    
+    
+
+}
+
+//MARK: - UI Collection View
+
+extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        view.addView(customNavigationView)
+        if kind == UICollectionView.elementKindSectionHeader && indexPath.section == 1 {
+            let header = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: CategoryHeader.headerId,
+                for: indexPath) as! CategoryHeader
+
+            return header
+            
+        }
+        
+        return UICollectionReusableView()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        10
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if indexPath.section == 0 {
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: CategoryCell.idCategoryCell,
+                for: indexPath) as! CategoryCell
+               
+                cell.configure(value: "Суши", image: Resources.setImage.logo()!, count: "4")
+                cell.layer.cornerRadius = 8
+                return cell
+            } else {
+                let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: SubMenuCell.idSubMenuCell,
+                    for: indexPath) as! SubMenuCell
+                
+                cell.backgroundColor = .white
+                cell.layer.cornerRadius = 8
+                
+                return cell
+            }
+        
+    }
+    
+}
+
+
+// MARK: Set Constraints
+
+extension MenuViewController {
+    
+    private func setConstraints() {
+        
         customNavigationView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.trailing.equalToSuperview()
@@ -175,7 +186,13 @@ class MenuViewController: UIViewController, UICollectionViewDataSource, UICollec
             
         }
         
+        categoryCollectionView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(customNavigationView.snp.bottom)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+        
     }
     
-
+    
 }

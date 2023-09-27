@@ -20,6 +20,10 @@ class CategoryCell: UICollectionViewCell {
         
         layer.backgroundColor = Resources.SetColor.abbey()?.cgColor
         
+        addView(imageView)
+        addView(name)
+        addView(subMenuCount)
+        
         setConstrains()
     }
     
@@ -37,10 +41,6 @@ class CategoryCell: UICollectionViewCell {
 extension CategoryCell {
     
     private func setConstrains() {
-        
-        addView(imageView)
-        addView(name)
-        addView(subMenuCount)
         
         imageView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
