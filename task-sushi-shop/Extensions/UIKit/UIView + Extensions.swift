@@ -27,3 +27,13 @@ extension UIView {
   }
     
 }
+
+
+extension UIView {
+    
+    static func dummyView() -> UIView {
+        let view = UIView()
+        
+        return view
+    }
+}

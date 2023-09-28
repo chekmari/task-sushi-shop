@@ -9,77 +9,36 @@ import UIKit
 
 class SubMenuCell: UICollectionViewCell {
     
-    private var name = UILabel()
-    private var сomposition = UILabel()
-    private var cost = UILabel()
-    private let imageView = UIImageView()
+    private let subMenuView = CustomSubMenuView()
     private let button = UIButton()
+    
     
     static var idSubMenuCell = "idSubMenuCell"
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        layer.backgroundColor = Resources.SetColor.black()?.cgColor
+        layer.opacity = 0
+        layer.cornerRadius = 12
         
-        name.text = "name"
-        name.textAlignment = .center
+        addView(subMenuView)
         
-        сomposition.text = "sostav"
-        сomposition.textAlignment = .center
+        subMenuView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.bottom.equalToSuperview().inset(25)
+        }
         
-        cost.text = "cost"
-        cost.textAlignment = .center
-        
-        imageView.image = UIImage(named: "logo")
-        imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFit
-        imageView.layer.borderWidth = 0.5
-        imageView.layer.borderColor = UIColor.blue.cgColor
-        
-        
-        button.setTitle("fsdfsdfds", for: .normal)
-        button.backgroundColor = .green
-        button.layer.cornerRadius = 6
-        
-        addView(name)
-        addView(сomposition)
-        addView(cost)
-        addView(imageView)
+        button.setTitle("В корзину", for: .normal)
+        button.tintColor = Resources.SetColor.white()
+        button.backgroundColor = Resources.SetColor.dodgerBlue()
+        button.layer.cornerRadius = 8
         addView(button)
-        
-        name.layer.borderWidth = 0.3
-        name.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(6)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalToSuperview().dividedBy(8)
-        }
-        
-        сomposition.layer.borderWidth = 0.3
-        сomposition.snp.makeConstraints { make in
-            make.trailing.leading.equalToSuperview()
-            make.top.equalTo(name.snp.bottom).inset(10)
-            make.bottom.equalTo(cost.snp.top).inset(10)
-        }
-        
-        cost.layer.borderWidth = 0.3
-        cost.snp.makeConstraints { make in
-            make.bottom.equalTo(imageView.snp.top)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalToSuperview().dividedBy(8)
-        }
-        
-        imageView.snp.makeConstraints { make in
-            make.height.equalToSuperview().dividedBy(2.4)
-            make.bottom.equalToSuperview().inset(20)
-            make.leading.trailing.equalToSuperview()
-        }
         
         button.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview()
-            make.trailing.leading.equalToSuperview().inset(30)
-            make.height.equalTo(40)
+            make.trailing.leading.equalToSuperview().inset(14)
+            make.height.equalTo(50)
         }
         
     }
@@ -89,3 +48,4 @@ class SubMenuCell: UICollectionViewCell {
     }
     
 }
+

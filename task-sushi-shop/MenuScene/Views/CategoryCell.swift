@@ -19,6 +19,7 @@ class CategoryCell: UICollectionViewCell {
         super.init(frame: frame)
         
         layer.backgroundColor = Resources.SetColor.abbey()?.cgColor
+        layer.cornerRadius = 10
         
         addView(imageView)
         addView(name)
@@ -46,7 +47,6 @@ extension CategoryCell {
             make.top.left.right.equalToSuperview()
             make.height.equalToSuperview().dividedBy(2)
         }
-        
         
         name.snp.makeConstraints { make in
             make.top.equalTo(imageView.snp.bottom).offset(10)

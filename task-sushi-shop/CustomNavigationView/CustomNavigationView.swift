@@ -10,7 +10,9 @@ import SnapKit
 
 class CustomNavigationView: UIView {
     
-    private var logoImageView = UIImageView(image: Resources.setImage.logo())
+    private var logoImageView = UIImageView(
+        image: Resources.setImage.logo()
+    )
     private var favoritesButton: UIButton!
     private var callButton: UIButton!
     
@@ -59,12 +61,16 @@ extension CustomNavigationView {
     
     private func setupButtons() {
         
-        favoritesButton = UIButton.customNavigationButton(withImageNamed: .star,
-                                                          target: self,
-                                                          action: #selector(favoritesButtonTapped))
-        callButton = UIButton.customNavigationButton(withImageNamed: .phone,
-                                                     target: self,
-                                                     action: #selector(callButtonTapped))
+        favoritesButton = UIButton.customNavigationButton(
+            withImageNamed: .star,
+            target: self,
+            action: #selector(favoritesButtonTapped)
+        )
+        callButton = UIButton.customNavigationButton(
+            withImageNamed: .phone,
+            target: self,
+            action: #selector(callButtonTapped)
+        )
         
     }
     

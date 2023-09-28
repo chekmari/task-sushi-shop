@@ -15,17 +15,15 @@ class InfoViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = Resources.SetColor.mineShaft()
-        setupCustomNavigationView()
-
-//        customNavigationView.layer.borderColor = UIColor.white.cgColor
-//        customNavigationView.layer.borderWidth = 1
+        view.addView(customNavigationView)
+        
+        setConstraints()
     }
     
-    // MARK: - Custom Navigation View
+    // MARK: - Set Constraints
     
-    private func setupCustomNavigationView() {
+    private func setConstraints() {
         
-        view.addView(customNavigationView)
         customNavigationView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.trailing.equalToSuperview()

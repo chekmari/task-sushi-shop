@@ -8,31 +8,36 @@
 import UIKit
 import SnapKit
 
-class CustomTabBarController: UITabBarController {
+final class CustomTabBarController: UITabBarController {
     
-    let menuVC = MenuViewController()
-    let bagVC = BagViewController()
-    let infoVC = InfoViewController()
+    private let menuVC = MenuViewController()
+    private let bagVC = BagViewController()
+    private let infoVC = InfoViewController()
+    
+    private let menuTabBar = UITabBarItem(
+        title: nil,
+        image: Resources.TabBars.menu(),
+        selectedImage: Resources.TabBars.menuSelected()
+    )
+    private let bagTabBar = UITabBarItem(
+        title: nil,
+        image: Resources.TabBars.bag(),
+        selectedImage: Resources.TabBars.bagSelected()
+    )
+    private let infoTabBar = UITabBarItem(
+        title: nil,
+        image: Resources.TabBars.info(),
+        selectedImage: Resources.TabBars.infoSelected()
+    )
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let menuTabBar = UITabBarItem(title: nil,
-                                      image: Resources.TabBars.menu(),
-                                      selectedImage: Resources.TabBars.menuSelected())
-        let bagTabBar = UITabBarItem(title: nil,
-                                     image: Resources.TabBars.bag(),
-                                     selectedImage: Resources.TabBars.bagSelected())
-        let infoTabBar = UITabBarItem(title: nil,
-                                      image: Resources.TabBars.info(),
-                                      selectedImage: Resources.TabBars.infoSelected())
         
         menuVC.tabBarItem = menuTabBar
         bagVC.tabBarItem = bagTabBar
         infoVC.tabBarItem = infoTabBar
         
         viewControllers = [menuVC, bagVC, infoVC]
-        
     }
     
 }
