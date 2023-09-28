@@ -28,12 +28,23 @@ extension UIView {
     
 }
 
+// MARK: -
 
 extension UIView {
     
-    static func dummyView() -> UIView {
-        let view = UIView()
-        
-        return view
+    func roundCorners(corners:UIRectCorner, radius: CGFloat) {
+      let path = UIBezierPath(
+        roundedRect: self.bounds,
+        byRoundingCorners: corners,
+        cornerRadii: CGSize(
+            width: radius,
+            height: radius
+        )
+      )
+      let mask = CAShapeLayer()
+      mask.path = path.cgPath
+      self.layer.mask = mask
     }
+    
 }
+

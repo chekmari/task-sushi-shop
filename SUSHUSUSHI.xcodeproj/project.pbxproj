@@ -40,6 +40,7 @@
 		FAA2229A2AC2FCFC00D9703F /* Fetch Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA222992AC2FCFC00D9703F /* Fetch Data.swift */; };
 		FAD4D9D12AC2E91D004B00D9 /* CategoryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD4D9D02AC2E91D004B00D9 /* CategoryHeader.swift */; };
 		FAEE3B342AC591A700DFFD89 /* CustomSubMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE3B332AC591A700DFFD89 /* CustomSubMenuView.swift */; };
+		FAEE3B362AC5A32600DFFD89 /* UIImageView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE3B352AC5A32600DFFD89 /* UIImageView + Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,7 @@
 		FAA222992AC2FCFC00D9703F /* Fetch Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fetch Data.swift"; sourceTree = "<group>"; };
 		FAD4D9D02AC2E91D004B00D9 /* CategoryHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHeader.swift; sourceTree = "<group>"; };
 		FAEE3B332AC591A700DFFD89 /* CustomSubMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSubMenuView.swift; sourceTree = "<group>"; };
+		FAEE3B352AC5A32600DFFD89 /* UIImageView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 				FA8D43E72AC1B7B400CC9774 /* CALayer + Extensions.swift */,
 				FA8CB75E2AC2B229005CC809 /* UILabel + Extension.swift */,
 				FA8CB7602AC2B484005CC809 /* UIFont + Extensions.swift */,
+				FAEE3B352AC5A32600DFFD89 /* UIImageView + Extensions.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				FA8CB75F2AC2B229005CC809 /* UILabel + Extension.swift in Sources */,
 				FA182A062ABDCF3E000CC6B5 /* UIColor + Extensions.swift in Sources */,
 				FAA2229A2AC2FCFC00D9703F /* Fetch Data.swift in Sources */,
+				FAEE3B362AC5A32600DFFD89 /* UIImageView + Extensions.swift in Sources */,
 				FA8CB7612AC2B484005CC809 /* UIFont + Extensions.swift in Sources */,
 				FAD4D9D12AC2E91D004B00D9 /* CategoryHeader.swift in Sources */,
 				FA4E96192AC0542C0043FDC9 /* Section.swift in Sources */,

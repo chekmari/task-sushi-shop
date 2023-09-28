@@ -9,7 +9,7 @@ import UIKit
 
 class SubMenuCell: UICollectionViewCell {
     
-    private let subMenuView = CustomSubMenuView()
+    let subMenuView = CustomSubMenuView()
     private let button = UIButton()
     
     

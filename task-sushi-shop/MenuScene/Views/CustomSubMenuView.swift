@@ -9,13 +9,12 @@ import UIKit
 
 class CustomSubMenuView: UIView {
 
-    private let name = UILabel.nameText()
-    private let сomposition = UILabel.composition()
-    private let cost = UILabel.cost()
-    private let weight = UILabel.weight()
-    private let imageView = UIImageView()
+    let name = UILabel.nameText()
+    let сomposition = UILabel.composition()
+    let cost = UILabel.cost()
+    let weight = UILabel.weight()
+    let imageView = UIImageView.subMenu()
     private let button = UIButton()
-    private let dummyView = UIView.dummyView()
     
     
     override init(frame: CGRect) {
@@ -23,13 +22,6 @@ class CustomSubMenuView: UIView {
         
         layer.backgroundColor = Resources.SetColor.black()?.cgColor
         layer.cornerRadius = 12
-        
-        imageView.image = UIImage(systemName: "fill")
-        
-        imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFit
-        imageView.layer.borderWidth = 0.5
-        imageView.layer.borderColor = UIColor.blue.cgColor
         
         button.setTitle("В корзину", for: .normal)
         button.tintColor = Resources.SetColor.white()
@@ -59,22 +51,19 @@ class CustomSubMenuView: UIView {
 extension CustomSubMenuView {
     
     private func setConstraints() {
-        
-        name.layer.borderWidth = 0.3
+
         name.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalToSuperview().dividedBy(8)
         }
         
-        сomposition.layer.borderWidth = 0.3
         сomposition.snp.makeConstraints { make in
             make.trailing.leading.equalToSuperview()
             make.top.equalTo(name.snp.bottom).inset(10)
             make.bottom.equalTo(cost.snp.top).inset(10)
         }
         
-        cost.layer.borderWidth = 0.3
         cost.snp.makeConstraints { make in
             make.bottom.equalTo(imageView.snp.top)
             make.leading.equalToSuperview()
@@ -90,8 +79,8 @@ extension CustomSubMenuView {
         }
         
         imageView.snp.makeConstraints { make in
-            make.height.equalToSuperview().dividedBy(2.4)
-            make.bottom.equalToSuperview().inset(20)
+            make.height.equalToSuperview().dividedBy(2)
+            make.bottom.equalToSuperview()
             make.leading.trailing.equalToSuperview()
         }
         
