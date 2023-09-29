@@ -29,7 +29,7 @@ class MenuViewController: UIViewController {
                                         forCellWithReuseIdentifier: SubMenuCell.idSubMenuCell)
         categoryCollectionView.register(CategoryHeader.self,
                                         forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                        withReuseIdentifier: CategoryHeader.headerId)
+                                        withReuseIdentifier:        CategoryHeader.headerId)
         
         view.backgroundColor = Resources.SetColor.mineShaft()
         view.addView(customNavigationView)
@@ -46,11 +46,14 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        if kind == UICollectionView.elementKindSectionHeader && indexPath.section == 1 {
+        if kind == UICollectionView.elementKindSectionHeader && indexPath.section == 1 
+        {
             let header = collectionView.dequeueReusableSupplementaryView(
                 ofKind: kind,
                 withReuseIdentifier: CategoryHeader.headerId,
-                for: indexPath) as! CategoryHeader
+                for: indexPath) as!  CategoryHeader
+            
+
 
             return header
             
@@ -69,25 +72,26 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if indexPath.section == 0 {
-                let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier:CategoryCell.idCategoryCell,
-                    for: indexPath) as! CategoryCell
-               
-                cell.configure(value: "Суши", image: Resources.setImage.logo()!, count: "4")
+        if indexPath.section == 0 
+        {
+            let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: CategoryCell.idCategoryCell,
+            for: indexPath) as!  CategoryCell
             
-                return cell
-            } else {
-                let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier:SubMenuCell.idSubMenuCell,
-                    for: indexPath) as! SubMenuCell
+        
+            return cell
+        } else {
+            
+            let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: SubMenuCell.idSubMenuCell,
+            for: indexPath) as!  SubMenuCell
+                
+            
                 
                 
                 
-                
-                
-                return cell
-            }
+            return cell
+        }
         
     }
     

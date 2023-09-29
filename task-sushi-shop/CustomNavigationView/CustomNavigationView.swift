@@ -51,7 +51,6 @@ extension CustomNavigationView {
         setupButtons()
         setupImageView()
         
-    
         addView(logoImageView)
         addView(favoritesButton)
         addView(callButton)

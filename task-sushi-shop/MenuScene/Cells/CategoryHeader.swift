@@ -1,10 +1,14 @@
+// MARK: - Category Header
+
 import UIKit
 
 class CategoryHeader: UICollectionReusableView {
     
-    let label = UILabel.headerText()
-    
     static let headerId = "CategoryCell"
+    
+    private let label = UILabel.headerText()
+    
+    // MARK: - Initialize
 
     override init(frame: CGRect) {
         super.init(frame: frame)

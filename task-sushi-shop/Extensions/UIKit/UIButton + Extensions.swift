@@ -23,5 +23,17 @@ extension UIButton {
         return button
     }
     
-    
+    static func cellButton(with target: Any?, and action: Selector) -> UIButton {
+        
+        let button = UIButton()
+        
+        button.setTitle("В корзину", for: .normal)
+        button.backgroundColor = Resources.SetColor.dodgerBlue()
+        button.layer.cornerRadius = 16
+        button.addTarget(target, action: action, for: .touchUpInside)
+        button.tintColor = Resources.SetColor.white()
+        
+        
+        return button
+    }
 }

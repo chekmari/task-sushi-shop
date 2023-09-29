@@ -9,31 +9,26 @@ import UIKit
 
 class CustomSubMenuView: UIView {
 
-    let name = UILabel.nameText()
-    let сomposition = UILabel.composition()
-    let cost = UILabel.cost()
-    let weight = UILabel.weight()
-    let imageView = UIImageView.subMenu()
-    private let button = UIButton()
+    private let name = UILabel.nameText()
+    private let сomposition = UILabel.composition()
+    private let cost = UILabel.cost()
+    private let weight = UILabel.weight()
+    private let imageView = UIImageView.subMenu()
+   
     
+    // MARK: - Initialize
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         layer.backgroundColor = Resources.SetColor.black()?.cgColor
         layer.cornerRadius = 12
-        
-        button.setTitle("В корзину", for: .normal)
-        button.tintColor = Resources.SetColor.white()
-        button.backgroundColor = Resources.SetColor.dodgerBlue()
-        button.layer.cornerRadius = 16
-        
+    
         addView(name)
         addView(сomposition)
         addView(cost)
         addView(imageView)
         addView(weight)
-        
         
         setConstraints()
     }
@@ -42,8 +37,16 @@ class CustomSubMenuView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
 
+    
+}
+
+// MARK: - Set Constraints
+
+extension CustomNavigationView {
+    
+   
+    
 }
 
 // MARK: - Set Contraints

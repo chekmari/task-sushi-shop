@@ -41,6 +41,8 @@
 		FAD4D9D12AC2E91D004B00D9 /* CategoryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD4D9D02AC2E91D004B00D9 /* CategoryHeader.swift */; };
 		FAEE3B342AC591A700DFFD89 /* CustomSubMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE3B332AC591A700DFFD89 /* CustomSubMenuView.swift */; };
 		FAEE3B362AC5A32600DFFD89 /* UIImageView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE3B352AC5A32600DFFD89 /* UIImageView + Extensions.swift */; };
+		FAEE3B382AC6CEDB00DFFD89 /* UIStepper + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE3B372AC6CEDB00DFFD89 /* UIStepper + Extensions.swift */; };
+		FAEE3B3A2AC6D65500DFFD89 /* CustomStepper .swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE3B392AC6D65500DFFD89 /* CustomStepper .swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +79,8 @@
 		FAD4D9D02AC2E91D004B00D9 /* CategoryHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHeader.swift; sourceTree = "<group>"; };
 		FAEE3B332AC591A700DFFD89 /* CustomSubMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSubMenuView.swift; sourceTree = "<group>"; };
 		FAEE3B352AC5A32600DFFD89 /* UIImageView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extensions.swift"; sourceTree = "<group>"; };
+		FAEE3B372AC6CEDB00DFFD89 /* UIStepper + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStepper + Extensions.swift"; sourceTree = "<group>"; };
+		FAEE3B392AC6D65500DFFD89 /* CustomStepper .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomStepper .swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +160,7 @@
 				FA8CB75E2AC2B229005CC809 /* UILabel + Extension.swift */,
 				FA8CB7602AC2B484005CC809 /* UIFont + Extensions.swift */,
 				FAEE3B352AC5A32600DFFD89 /* UIImageView + Extensions.swift */,
+				FAEE3B372AC6CEDB00DFFD89 /* UIStepper + Extensions.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -209,12 +214,20 @@
 		FA4E96262AC07A7B0043FDC9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FA4E96242AC07A750043FDC9 /* CategoryCell.swift */,
-				FA8CB7642AC2D3CA005CC809 /* SubMenuCell.swift */,
-				FAD4D9D02AC2E91D004B00D9 /* CategoryHeader.swift */,
 				FAEE3B332AC591A700DFFD89 /* CustomSubMenuView.swift */,
+				FAEE3B392AC6D65500DFFD89 /* CustomStepper .swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		FAEE3B3B2AC6F23400DFFD89 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FA4E96242AC07A750043FDC9 /* CategoryCell.swift */,
+				FAD4D9D02AC2E91D004B00D9 /* CategoryHeader.swift */,
+				FA8CB7642AC2D3CA005CC809 /* SubMenuCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		FAF0A33C2ABF19410065EDD4 /* BagScene */ = {
@@ -236,8 +249,9 @@
 		FAF0A33E2ABF19590065EDD4 /* MenuScene */ = {
 			isa = PBXGroup;
 			children = (
-				FAF0A33F2ABF1EA10065EDD4 /* Models */,
 				FA4E96262AC07A7B0043FDC9 /* Views */,
+				FAEE3B3B2AC6F23400DFFD89 /* Cells */,
+				FAF0A33F2ABF1EA10065EDD4 /* Models */,
 				FAF0A3402ABF1EAC0065EDD4 /* Controllers */,
 			);
 			path = MenuScene;
@@ -351,6 +365,7 @@
 				FA4E96232AC06A040043FDC9 /* DummyView.swift in Sources */,
 				FA4E96252AC07A750043FDC9 /* CategoryCell.swift in Sources */,
 				FA8CB7652AC2D3CA005CC809 /* SubMenuCell.swift in Sources */,
+				FAEE3B382AC6CEDB00DFFD89 /* UIStepper + Extensions.swift in Sources */,
 				FAEE3B342AC591A700DFFD89 /* CustomSubMenuView.swift in Sources */,
 				FA182A022ABDC3FE000CC6B5 /* CustomTabBarController.swift in Sources */,
 				FA055B722ABDB50E00C166C3 /* AppDelegate.swift in Sources */,
@@ -375,6 +390,7 @@
 				FA8D43E82AC1B7B400CC9774 /* CALayer + Extensions.swift in Sources */,
 				FA8D43E62AC1B5A500CC9774 /* MenuModel.swift in Sources */,
 				FA182A112ABE0DAF000CC6B5 /* UIButton + Extensions.swift in Sources */,
+				FAEE3B3A2AC6D65500DFFD89 /* CustomStepper .swift in Sources */,
 				FA182A0C2ABDD847000CC6B5 /* UIView + Extensions.swift in Sources */,
 				FA6669A62ABDB91200D4A4C8 /* MenuViewController.swift in Sources */,
 			);

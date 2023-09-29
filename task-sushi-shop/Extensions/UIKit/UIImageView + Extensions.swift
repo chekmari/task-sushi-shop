@@ -19,4 +19,15 @@ extension UIImageView {
         
         return imageView
     }
+    
+    static func category() -> UIImageView {
+        let imageView = UIImageView()
+        
+        imageView.layer.corner(radius: 10, corners: [.topLeft , .topRight])
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleToFill
+        
+        return imageView
+    }
+    
 }

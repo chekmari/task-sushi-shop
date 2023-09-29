@@ -1,19 +1,17 @@
-//
-//  CategoryCell.swift
-//  SUSHUSUSHI
-//
-//  Created by macbook on 24.09.2023.
-//
+// MARK: - Category Cell
 
 import UIKit
+import Kingfisher
 
 class CategoryCell: UICollectionViewCell {
     
-    private let imageView = UIImageView()
+    static var idCategoryCell = "idCategoryCell"
+    
+    private let imageView = UIImageView.category()
     private var name = UILabel.categoryText()
     private let subMenuCount = UILabel.countText()
     
-    static var idCategoryCell = "idCategoryCell"
+    // MARK: - Initialize
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,12 +30,22 @@ class CategoryCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func configure(value: String, image: UIImage, count: String) {
+    // MARK: - Configure
+    
+    public func configure(value: String, count: String, imageURL: URL?) {
+        
         name.text = value
-        imageView.image = image
         subMenuCount.text = "\(count) товаров"
+        
+        if let imageURL = imageURL {
+            self.imageView.kf.setImage(with: imageURL)
+        }
+        
     }
+    
 }
+
+// MARK: - Set Constraints
 
 extension CategoryCell {
     

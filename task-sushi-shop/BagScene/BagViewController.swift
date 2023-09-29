@@ -14,14 +14,14 @@ class BagViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.addView(customNavigationView)
         view.backgroundColor = Resources.SetColor.mineShaft()
-        setupCustomNavigationView()
-
+        
+        setConstraints()
     }
     
-    private func setupCustomNavigationView() {
+    private func setConstraints() {
         
-        view.addView(customNavigationView)
         customNavigationView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.trailing.equalToSuperview()

@@ -107,7 +107,6 @@ enum Resources {
             UIColor(rgb: Resources.ElementUIColors.silverSans.rawValue)
         }
         
-        
     }
     
     enum setImage {
