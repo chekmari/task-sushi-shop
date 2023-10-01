@@ -52,6 +52,7 @@ final class CustomStepper: UIControl {
     }()
     
     //MARK: - Initialize
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -64,14 +65,17 @@ final class CustomStepper: UIControl {
     }
     
     //MARK: - UI
+    
     private func setupViews() {
+        
         backgroundColor = Resources.SetColor.abbey()
         layer.cornerRadius = 16
         
-        addSubview(horizontalStackView)
+        addView(horizontalStackView)
         horizontalStackView.addArrangedSubview(decreaseButton)
         horizontalStackView.addArrangedSubview(currentStepValueLabel)
         horizontalStackView.addArrangedSubview(increaseButton)
+
     }
     
     private func setContraints() {
@@ -83,9 +87,9 @@ final class CustomStepper: UIControl {
     }
     
     //MARK: - Actions
+    
     @objc private func buttonAction(_ sender: UIButton) {
         
-       
         switch sender {
         case decreaseButton:
             currentValue -= 1

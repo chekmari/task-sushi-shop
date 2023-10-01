@@ -78,6 +78,8 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
             withReuseIdentifier: CategoryCell.idCategoryCell,
             for: indexPath) as!  CategoryCell
             
+            
+            // cell.configure(value: <#T##String#>, count: <#T##String#>, imageURL: <#T##URL?#>)
         
             return cell
         } else {

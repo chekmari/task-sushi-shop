@@ -24,7 +24,6 @@ extension UIButton {
     }
     
     static func cellButton(with target: Any?, and action: Selector) -> UIButton {
-        
         let button = UIButton()
         
         button.setTitle("В корзину", for: .normal)
@@ -33,6 +32,16 @@ extension UIButton {
         button.addTarget(target, action: action, for: .touchUpInside)
         button.tintColor = Resources.SetColor.white()
         
+        return button
+    }
+    
+    static func forStepper(with target: Any?, and action: Selector) -> UIButton {
+        let button = UIButton()
+        
+        button.setTitleColor(Resources.SetColor.white(), for: .normal)
+        button.setTitle("-", for: .normal)
+        button.titleLabel?.font = UIFont(name: Resources.Fonts.arial.rawValue, size: 32)
+        button.addTarget(target, action: action, for: .touchUpInside)
         
         return button
     }

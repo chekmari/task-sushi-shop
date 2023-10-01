@@ -18,6 +18,7 @@
 		FA182A0F2ABE022D000CC6B5 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA182A0E2ABE022D000CC6B5 /* CustomNavigationView.swift */; };
 		FA182A112ABE0DAF000CC6B5 /* UIButton + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA182A102ABE0DAF000CC6B5 /* UIButton + Extensions.swift */; };
 		FA2159BF2ABDBCBC003B877E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FA2159BE2ABDBCBC003B877E /* SnapKit */; };
+		FA281F582AC836440010D4D4 /* SushuSushiAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA281F572AC836440010D4D4 /* SushuSushiAPI.swift */; };
 		FA4E96172AC053CA0043FDC9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E96162AC053CA0043FDC9 /* Item.swift */; };
 		FA4E96192AC0542C0043FDC9 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E96182AC0542C0043FDC9 /* Section.swift */; };
 		FA4E961B2AC0546C0043FDC9 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E961A2AC0546C0043FDC9 /* Header.swift */; };
@@ -37,7 +38,8 @@
 		FA8CB7652AC2D3CA005CC809 /* SubMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8CB7642AC2D3CA005CC809 /* SubMenuCell.swift */; };
 		FA8D43E62AC1B5A500CC9774 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8D43E52AC1B5A500CC9774 /* MenuModel.swift */; };
 		FA8D43E82AC1B7B400CC9774 /* CALayer + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8D43E72AC1B7B400CC9774 /* CALayer + Extensions.swift */; };
-		FAA2229A2AC2FCFC00D9703F /* Fetch Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA222992AC2FCFC00D9703F /* Fetch Data.swift */; };
+		FAA2229A2AC2FCFC00D9703F /* Resources Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA222992AC2FCFC00D9703F /* Resources Network.swift */; };
+		FAAF8E522AC711D100B5C738 /* Facade.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF8E512AC711D100B5C738 /* Facade.swift */; };
 		FAD4D9D12AC2E91D004B00D9 /* CategoryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD4D9D02AC2E91D004B00D9 /* CategoryHeader.swift */; };
 		FAEE3B342AC591A700DFFD89 /* CustomSubMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE3B332AC591A700DFFD89 /* CustomSubMenuView.swift */; };
 		FAEE3B362AC5A32600DFFD89 /* UIImageView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE3B352AC5A32600DFFD89 /* UIImageView + Extensions.swift */; };
@@ -58,6 +60,7 @@
 		FA182A0B2ABDD847000CC6B5 /* UIView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
 		FA182A0E2ABE022D000CC6B5 /* CustomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
 		FA182A102ABE0DAF000CC6B5 /* UIButton + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + Extensions.swift"; sourceTree = "<group>"; };
+		FA281F572AC836440010D4D4 /* SushuSushiAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SushuSushiAPI.swift; sourceTree = "<group>"; };
 		FA4E96162AC053CA0043FDC9 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		FA4E96182AC0542C0043FDC9 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		FA4E961A2AC0546C0043FDC9 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
@@ -75,7 +78,8 @@
 		FA8CB7642AC2D3CA005CC809 /* SubMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubMenuCell.swift; sourceTree = "<group>"; };
 		FA8D43E52AC1B5A500CC9774 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 		FA8D43E72AC1B7B400CC9774 /* CALayer + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer + Extensions.swift"; sourceTree = "<group>"; };
-		FAA222992AC2FCFC00D9703F /* Fetch Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fetch Data.swift"; sourceTree = "<group>"; };
+		FAA222992AC2FCFC00D9703F /* Resources Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resources Network.swift"; sourceTree = "<group>"; };
+		FAAF8E512AC711D100B5C738 /* Facade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Facade.swift; sourceTree = "<group>"; };
 		FAD4D9D02AC2E91D004B00D9 /* CategoryHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHeader.swift; sourceTree = "<group>"; };
 		FAEE3B332AC591A700DFFD89 /* CustomSubMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSubMenuView.swift; sourceTree = "<group>"; };
 		FAEE3B352AC5A32600DFFD89 /* UIImageView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extensions.swift"; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 		FA055B702ABDB50E00C166C3 /* task-sushi-shop */ = {
 			isa = PBXGroup;
 			children = (
+				FAAF8E502AC711A400B5C738 /* Network */,
 				FA4E96152AC053BB0043FDC9 /* AdapterForCollectionView */,
 				FAF0A3412ABF20840065EDD4 /* API */,
 				FA182A092ABDD6EF000CC6B5 /* CustomTabBarController */,
@@ -220,6 +225,16 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		FAAF8E502AC711A400B5C738 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				FAA222992AC2FCFC00D9703F /* Resources Network.swift */,
+				FAAF8E512AC711D100B5C738 /* Facade.swift */,
+				FA281F572AC836440010D4D4 /* SushuSushiAPI.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		FAEE3B3B2AC6F23400DFFD89 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,7 +292,6 @@
 		FAF0A3412ABF20840065EDD4 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				FAA222992AC2FCFC00D9703F /* Fetch Data.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -377,7 +391,8 @@
 				FA6669AA2ABDB97400D4A4C8 /* InfoViewController.swift in Sources */,
 				FA8CB75F2AC2B229005CC809 /* UILabel + Extension.swift in Sources */,
 				FA182A062ABDCF3E000CC6B5 /* UIColor + Extensions.swift in Sources */,
-				FAA2229A2AC2FCFC00D9703F /* Fetch Data.swift in Sources */,
+				FAA2229A2AC2FCFC00D9703F /* Resources Network.swift in Sources */,
+				FA281F582AC836440010D4D4 /* SushuSushiAPI.swift in Sources */,
 				FAEE3B362AC5A32600DFFD89 /* UIImageView + Extensions.swift in Sources */,
 				FA8CB7612AC2B484005CC809 /* UIFont + Extensions.swift in Sources */,
 				FAD4D9D12AC2E91D004B00D9 /* CategoryHeader.swift in Sources */,
@@ -389,6 +404,7 @@
 				FA4E961B2AC0546C0043FDC9 /* Header.swift in Sources */,
 				FA8D43E82AC1B7B400CC9774 /* CALayer + Extensions.swift in Sources */,
 				FA8D43E62AC1B5A500CC9774 /* MenuModel.swift in Sources */,
+				FAAF8E522AC711D100B5C738 /* Facade.swift in Sources */,
 				FA182A112ABE0DAF000CC6B5 /* UIButton + Extensions.swift in Sources */,
 				FAEE3B3A2AC6D65500DFFD89 /* CustomStepper .swift in Sources */,
 				FA182A0C2ABDD847000CC6B5 /* UIView + Extensions.swift in Sources */,
