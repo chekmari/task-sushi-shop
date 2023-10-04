@@ -4,7 +4,7 @@ import UIKit
 
 class SubMenuCell: UICollectionViewCell {
     
-    static var idSubMenuCell = "idSubMenuCell"
+    static  var idSubMenuCell = "idSubMenuCell"
     
     private let subMenuView = CustomSubMenuView()
     private var button: UIButton!

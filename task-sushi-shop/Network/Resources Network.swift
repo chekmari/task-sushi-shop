@@ -11,6 +11,7 @@ enum Network {
     
     enum URLs: String {
         
+        case image    = "https://vkus-sovet.ru"
         case category = "https://vkus-sovet.ru/api/getMenu.php"
         case dish     = "https://vkus-sovet.ru/api/getSubMenu.php"
         

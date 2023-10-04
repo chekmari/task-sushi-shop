@@ -9,34 +9,70 @@ import UIKit
 
 class MenuViewController: UIViewController {
     
-    let customNavigationView = CustomNavigationView()
+    // MARK: - UI Elements
+    
+    private let customNavigationView = CustomNavigationView()
     private var categoryCollectionView: UICollectionView!
+    private var activityIndicator = UIActivityIndicatorView()
+    
+    
+    // MARK: - Network
+    
+    private var facade = NetworkFacade()
+    private var categoryData: [CategoryList] = []
+    private var subMenuData: [MenuList] = []
+    
+    // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        categoryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
-        
-        categoryCollectionView.backgroundColor = Resources.SetColor.mineShaft()
-        categoryCollectionView.isScrollEnabled = true
-        
-        categoryCollectionView.dataSource = self
-        categoryCollectionView.delegate = self
-        
-        categoryCollectionView.register(CategoryCell.self,
-                                        forCellWithReuseIdentifier: CategoryCell.idCategoryCell)
-        categoryCollectionView.register(SubMenuCell.self, 
-                                        forCellWithReuseIdentifier: SubMenuCell.idSubMenuCell)
-        categoryCollectionView.register(CategoryHeader.self,
-                                        forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                        withReuseIdentifier:        CategoryHeader.headerId)
+        setupCollectionView()
+        setupIndicator()
         
         view.backgroundColor = Resources.SetColor.mineShaft()
         view.addView(customNavigationView)
         view.addView(categoryCollectionView)
+        view.addSubview(activityIndicator)
+        
         setConstraints()
+        
+        loadCategory()
 
     }
+    
+    // MARK: - Setup Collection View
+    
+    private func setupCollectionView() {
+        
+        categoryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
+        categoryCollectionView.backgroundColor = Resources.SetColor.mineShaft()
+        categoryCollectionView.isScrollEnabled = true
+        
+        categoryCollectionView.register(                            CategoryCell.self,
+                                        forCellWithReuseIdentifier: CategoryCell.idCategoryCell)
+        categoryCollectionView.register(                            SubMenuCell.self,
+                                        forCellWithReuseIdentifier: SubMenuCell.idSubMenuCell)
+        categoryCollectionView.register(                            CategoryHeader.self,
+                                        forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                        withReuseIdentifier:        CategoryHeader.headerId)
+        
+        categoryCollectionView.dataSource = self
+        categoryCollectionView.delegate = self
+    }
+    
+}
+
+// MARK: Activity Indicator
+
+extension MenuViewController {
+    
+    private func setupIndicator() {
+        activityIndicator.style = .medium
+        activityIndicator.color = .gray
+        activityIndicator.center = view.center
+    }
+    
     
 }
 
@@ -53,8 +89,8 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
                 withReuseIdentifier: CategoryHeader.headerId,
                 for: indexPath) as!  CategoryHeader
             
-
-
+            
+            
             return header
             
         }
@@ -62,15 +98,23 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
         return UICollectionReusableView()
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+    func collectionView(_ collectionView: UICollectionView, 
+                        numberOfItemsInSection section: Int) -> Int {
+        
+        switch section {
+        case 0:  return categoryData.count
+        case 1:  return 10
+        default: return 0
+        }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         2
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, 
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         
         if indexPath.section == 0 
         {
@@ -78,10 +122,14 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
             withReuseIdentifier: CategoryCell.idCategoryCell,
             for: indexPath) as!  CategoryCell
             
+            let category = categoryData[indexPath.item]
             
-            // cell.configure(value: <#T##String#>, count: <#T##String#>, imageURL: <#T##URL?#>)
-        
+            cell.configure(name:  category.name,
+                           count: category.subMenuCount,
+                           image: category.image)
+            
             return cell
+    
         } else {
             
             let cell = collectionView.dequeueReusableCell(
@@ -89,7 +137,7 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
             for: indexPath) as!  SubMenuCell
                 
             
-                
+            
                 
                 
             return cell
@@ -122,11 +170,12 @@ extension MenuViewController {
     }
     
     private func createLayout() -> UICollectionViewLayout {
-        
-        /// - Констрейнты для 1 секции
+    
         let spacing: CGFloat = 4
         let spacing2: CGFloat = 20
 
+        /// - Констрейнты для 1 секции
+        
         let itemSize1 = NSCollectionLayoutSize(
             widthDimension: .absolute(140),
             heightDimension: .absolute(130)
@@ -159,12 +208,10 @@ extension MenuViewController {
             alignment: .topLeading
         )
         
-        
         let itemSize2 = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .fractionalHeight(1.0)
         )
-        
         
         let item2 = NSCollectionLayoutItem(layoutSize: itemSize2)
 
@@ -178,22 +225,45 @@ extension MenuViewController {
 
         let section2 = NSCollectionLayoutSection(group: group2)
         section2.contentInsets = .init(top: spacing2, leading: spacing2, bottom: spacing2, trailing: spacing2)
-        
         section2.interGroupSpacing = spacing2
-        
         section2.boundarySupplementaryItems = [header2]
         
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, _) -> NSCollectionLayoutSection? in
-            if sectionIndex == 0 {
-                return section1
-            } else {
-                return section2
-            }
+            sectionIndex == 0 ? section1 : section2
         }
         
-
         return layout
     }
     
     
+}
+
+// MARK: - SushuSushi API
+
+extension MenuViewController {
+    
+    /// - Load Category
+    
+    private func loadCategory() {
+        
+        activityIndicator.startAnimating()
+        
+        facade.getCategory { categoryData, error in
+            
+            if let category = categoryData {
+                
+                DispatchQueue.main.async {
+                    if category.status { self.categoryData = category.menuList }
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
+                    self.categoryCollectionView.reloadData()
+                }
+                
+            } else if let error = error {
+                print("Ошибка при загрузке категорий: \(error.localizedDescription)")
+                self.activityIndicator.startAnimating()
+            }
+            
+        }
+    }
 }

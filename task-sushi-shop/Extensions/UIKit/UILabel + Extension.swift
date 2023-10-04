@@ -8,8 +8,10 @@ extension UILabel {
     static func categoryText() -> UILabel {
         let label = UILabel()
         
-        label.font = UIFont(name: Resources.Fonts.arialBold.rawValue, size: 18)
+        label.font = UIFont(name: Resources.Fonts.arialBold.rawValue, size: 20)
         label.textColor = Resources.SetColor.white()
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
         
         return label
     }
@@ -17,7 +19,7 @@ extension UILabel {
     static func countText() -> UILabel {
         let label = UILabel()
         
-        label.font = UIFont(name: Resources.Fonts.arial.rawValue, size: 8)
+        label.font = UIFont(name: Resources.Fonts.arial.rawValue, size: 12)
         label.textColor = Resources.SetColor.silverSans()
         
         return label

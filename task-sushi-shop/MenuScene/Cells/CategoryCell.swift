@@ -5,7 +5,7 @@ import Kingfisher
 
 class CategoryCell: UICollectionViewCell {
     
-    static var idCategoryCell = "idCategoryCell"
+    static  var idCategoryCell = "idCategoryCell"
     
     private let imageView = UIImageView.category()
     private var name = UILabel.categoryText()
@@ -32,15 +32,14 @@ class CategoryCell: UICollectionViewCell {
     
     // MARK: - Configure
     
-    public func configure(value: String, count: String, imageURL: URL?) {
+    public func configure(name: String, count: Int, image: String) {
         
-        name.text = value
+        let url = URL(string: "\(Network.URLs.image.rawValue)\(image)")
+        
+        self.name.text = name
         subMenuCount.text = "\(count) товаров"
-        
-        if let imageURL = imageURL {
-            self.imageView.kf.setImage(with: imageURL)
-        }
-        
+        self.imageView.kf.setImage(with: url)
+
     }
     
 }
@@ -59,11 +58,12 @@ extension CategoryCell {
         name.snp.makeConstraints { make in
             make.top.equalTo(imageView.snp.bottom).offset(10)
             make.centerX.equalToSuperview()
+            make.trailing.leading.equalToSuperview().inset(6)
         }
         
         subMenuCount.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().inset(4)
+            make.bottom.equalToSuperview().inset(10)
         }
         
     }

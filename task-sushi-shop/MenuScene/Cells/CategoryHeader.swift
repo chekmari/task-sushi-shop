@@ -4,7 +4,7 @@ import UIKit
 
 class CategoryHeader: UICollectionReusableView {
     
-    static let headerId = "CategoryCell"
+    static  let headerId = "CategoryCell"
     
     private let label = UILabel.headerText()
     

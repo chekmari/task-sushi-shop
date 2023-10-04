@@ -8,7 +8,7 @@ struct Category: Codable {
     let menuList: [CategoryList]
 }
 
-// MARK: - MenuList
+// MARK: - Category List
 struct CategoryList: Codable {
     let menuID, image, name: String
     let subMenuCount: Int

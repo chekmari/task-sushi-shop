@@ -3,6 +3,7 @@ import SnapKit
 
 final class CustomStepper: UIControl {
     
+    // MARK: - Value
     
     var currentValue = 0 {
         didSet {
@@ -10,6 +11,8 @@ final class CustomStepper: UIControl {
             currentStepValueLabel.text = "\(currentValue)"
         }
     }
+    
+    // MARK: - UI
     
     private lazy var decreaseButton: UIButton = {
         let button = UIButton()
@@ -64,7 +67,7 @@ final class CustomStepper: UIControl {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - UI
+    //MARK: - Setup Views & Constraints
     
     private func setupViews() {
         

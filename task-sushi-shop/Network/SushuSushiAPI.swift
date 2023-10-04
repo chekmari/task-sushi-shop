@@ -41,6 +41,9 @@ class SushuSushiAPI {
                 
                 if let data = data {
                     
+                    let jsonString = String(data: data, encoding: .utf8)
+                        print("Полученные данные: \(jsonString ?? "")")
+                    
                     do
                     {
                         let decodedData = try JSONDecoder().decode(responseType, from: data)
@@ -48,6 +51,7 @@ class SushuSushiAPI {
                     }
                     catch
                     {
+                        print("Ошибка при декодировании JSON: \(error.localizedDescription)")
                         completion(nil, error)
                     }
                     

@@ -122,7 +122,6 @@
 			children = (
 				FAAF8E502AC711A400B5C738 /* Network */,
 				FA4E96152AC053BB0043FDC9 /* AdapterForCollectionView */,
-				FAF0A3412ABF20840065EDD4 /* API */,
 				FA182A092ABDD6EF000CC6B5 /* CustomTabBarController */,
 				FA182A0D2ABDD8AA000CC6B5 /* CustomNavigationView */,
 				FAF0A33C2ABF19410065EDD4 /* BagScene */,
@@ -287,13 +286,6 @@
 				FA6669A52ABDB91200D4A4C8 /* MenuViewController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		FAF0A3412ABF20840065EDD4 /* API */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
