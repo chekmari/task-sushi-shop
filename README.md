@@ -1,3 +1,16 @@
 # task-sushi-shop
 
-таски: применить адаптер к колекции написать сетевой слой и обернуть в фасад отдалить хедер от 1 секции отрефакторить код по код стайлу айтем у 2 секции снизу сократить и
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/chekmari/task-sushi-shop/blob/main/imagesForREADME/launchScreen.PNG" width="300" alt="Список товаров на главном экране"><br>
+      <em>Launch Screen</em>
+    </td>
+    <td align="center">
+      <img src="https://github.com/chekmari/task-sushi-shop/blob/main/imagesForREADME/menu.PNG" width="300" alt="Детальная карточка товара"><br>
+      <em>Меню товаров</em>
+    </td>
+  </tr>
+</table>
+
+# таски: применить адаптер к колекции отдалить хедер от 1 секции отрефакторить код по код стайлу
