@@ -6,29 +6,18 @@ class SushuSushiAPI {
     
     func performPOSTrequest<T: Codable>(
         with url: String,
-        parameters: [String:Any] = [:],
+        parameters: [String:String] = [:],
         responseType: T.Type,
         completion: @escaping (T?, Error?) -> Void) {
             
-            guard let url = URL(string: url) else { print("Неправильный URL \(url)"); return }
+            var components = URLComponents(string: url)
+            components?.queryItems = parameters.map { URLQueryItem(name: $0, value: $1) }
+            
+            guard let url = components?.url else { print("Неправильный URL \(url)"); return }
             
             var request = URLRequest(url: url)
-            request.httpMethod = Network.HttpMethod.post.rawValue
-            
-            if !parameters.isEmpty {
-                
-                do
-                {
-                    let jsonData = try JSONSerialization.data(withJSONObject: parameters)
-                    request.httpBody = jsonData
-                }
-                catch
-                {
-                    completion(nil, error)
-                    return
-                }
-                
-            }
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpMethod = Network.HttpMethod.POST.rawValue
         
             let session = URLSession.shared
             
@@ -40,9 +29,6 @@ class SushuSushiAPI {
                 }
                 
                 if let data = data {
-                    
-                    let jsonString = String(data: data, encoding: .utf8)
-                        print("Полученные данные: \(jsonString ?? "")")
                     
                     do
                     {

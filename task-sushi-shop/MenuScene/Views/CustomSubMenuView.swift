@@ -1,9 +1,4 @@
-//
-//  CustomSubMenuView.swift
-//  SUSHUSUSHI
-//
-//  Created by macbook on 28.09.2023.
-//
+// MARK: - Custom Sub Menu View 
 
 import UIKit
 
@@ -12,7 +7,7 @@ class CustomSubMenuView: UIView {
     private let name = UILabel.nameText()
     private let сomposition = UILabel.composition()
     private let cost = UILabel.cost()
-    private let weight = UILabel.weight()
+    private var weight = UILabel.weight()
     private let imageView = UIImageView.subMenu()
    
     
@@ -43,9 +38,29 @@ class CustomSubMenuView: UIView {
 
 // MARK: - Set Constraints
 
-extension CustomNavigationView {
+extension CustomSubMenuView {
     
-   
+    public func sendToCell(name: String,
+                           сomposition: String,
+                           cost: String,
+                           weight: String?,
+                           spicy: String?,
+                           image: String) {
+        
+        let url = URL(string: "\(Network.URLs.image.rawValue)\(image)")
+        
+        self.name.text = name
+        self.сomposition.text = сomposition
+        self.cost.text = cost + " ₽"
+        self.imageView.kf.setImage(with: url)
+        
+        if weight == nil {
+            self.weight.text = ""
+        } else {
+            self.weight.text = "/ " + (weight ?? "")
+        }
+
+    }
     
 }
 
@@ -56,13 +71,14 @@ extension CustomSubMenuView {
     private func setConstraints() {
 
         name.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.width.equalToSuperview()
+            make.top.equalToSuperview().inset(6)
+            make.trailing.leading.equalToSuperview().inset(8)
             make.height.equalToSuperview().dividedBy(8)
         }
         
+    
         сomposition.snp.makeConstraints { make in
-            make.trailing.leading.equalToSuperview()
+            make.trailing.leading.equalToSuperview().inset(8)
             make.top.equalTo(name.snp.bottom).inset(10)
             make.bottom.equalTo(cost.snp.top).inset(10)
         }

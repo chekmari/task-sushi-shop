@@ -41,6 +41,7 @@
 		FAA2229A2AC2FCFC00D9703F /* Resources Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA222992AC2FCFC00D9703F /* Resources Network.swift */; };
 		FAAF8E522AC711D100B5C738 /* Facade.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAF8E512AC711D100B5C738 /* Facade.swift */; };
 		FAD4D9D12AC2E91D004B00D9 /* CategoryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD4D9D02AC2E91D004B00D9 /* CategoryHeader.swift */; };
+		FADD56BA2AD03E140007E518 /* UIActivityIndicator + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADD56B92AD03E140007E518 /* UIActivityIndicator + Extensions.swift */; };
 		FAEE3B342AC591A700DFFD89 /* CustomSubMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE3B332AC591A700DFFD89 /* CustomSubMenuView.swift */; };
 		FAEE3B362AC5A32600DFFD89 /* UIImageView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE3B352AC5A32600DFFD89 /* UIImageView + Extensions.swift */; };
 		FAEE3B382AC6CEDB00DFFD89 /* UIStepper + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE3B372AC6CEDB00DFFD89 /* UIStepper + Extensions.swift */; };
@@ -81,6 +82,7 @@
 		FAA222992AC2FCFC00D9703F /* Resources Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resources Network.swift"; sourceTree = "<group>"; };
 		FAAF8E512AC711D100B5C738 /* Facade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Facade.swift; sourceTree = "<group>"; };
 		FAD4D9D02AC2E91D004B00D9 /* CategoryHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHeader.swift; sourceTree = "<group>"; };
+		FADD56B92AD03E140007E518 /* UIActivityIndicator + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicator + Extensions.swift"; sourceTree = "<group>"; };
 		FAEE3B332AC591A700DFFD89 /* CustomSubMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSubMenuView.swift; sourceTree = "<group>"; };
 		FAEE3B352AC5A32600DFFD89 /* UIImageView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extensions.swift"; sourceTree = "<group>"; };
 		FAEE3B372AC6CEDB00DFFD89 /* UIStepper + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStepper + Extensions.swift"; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				FA8CB7602AC2B484005CC809 /* UIFont + Extensions.swift */,
 				FAEE3B352AC5A32600DFFD89 /* UIImageView + Extensions.swift */,
 				FAEE3B372AC6CEDB00DFFD89 /* UIStepper + Extensions.swift */,
+				FADD56B92AD03E140007E518 /* UIActivityIndicator + Extensions.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				FA8D43E62AC1B5A500CC9774 /* MenuModel.swift in Sources */,
 				FAAF8E522AC711D100B5C738 /* Facade.swift in Sources */,
 				FA182A112ABE0DAF000CC6B5 /* UIButton + Extensions.swift in Sources */,
+				FADD56BA2AD03E140007E518 /* UIActivityIndicator + Extensions.swift in Sources */,
 				FAEE3B3A2AC6D65500DFFD89 /* CustomStepper .swift in Sources */,
 				FA182A0C2ABDD847000CC6B5 /* UIView + Extensions.swift in Sources */,
 				FA6669A62ABDB91200D4A4C8 /* MenuViewController.swift in Sources */,

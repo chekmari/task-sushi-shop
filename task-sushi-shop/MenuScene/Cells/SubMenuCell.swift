@@ -21,7 +21,6 @@ class SubMenuCell: UICollectionViewCell {
         button = UIButton.cellButton(with: self, and: #selector(buttonPressed))
         stepper.addTarget(self, action: #selector(stepperChange), for: .valueChanged)
         
-        
         addView(subMenuView)
         addView(stepper)
         addView(button)
@@ -43,13 +42,30 @@ class SubMenuCell: UICollectionViewCell {
     
     @objc
     private func stepperChange() {
-        
-        if stepper.currentValue == 0 {
-            button.isHidden = false
-        }
-        
+        if stepper.currentValue == 0 { button.isHidden = false }
     }
     
+}
+
+// MARK: - Configure
+
+extension SubMenuCell {
+    
+    public func configure(
+        name: String, 
+        сomposition: String,
+        cost: String,
+        weight: String?,
+        spicy: String?,
+        image: String) {
+            
+            subMenuView.sendToCell(name: name,
+                                   сomposition: сomposition,
+                                   cost: cost,
+                                   weight: weight,
+                                   spicy: spicy,
+                                   image: image)
+    }
 }
 
 // MARK: - Set Constraints

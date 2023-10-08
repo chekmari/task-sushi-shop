@@ -24,7 +24,8 @@ enum Resources {
     
     enum Images: String {
         
-        case logo = "logo"
+        case logo
+        case dummyLogo
         
     }
     
@@ -114,6 +115,11 @@ enum Resources {
         static func logo() -> UIImage? {
             UIImage(named: Resources.Images.logo.rawValue)
         }
+        
+        static func dummyLogo() -> UIImage? {
+            UIImage(named: Resources.Images.dummyLogo.rawValue)
+        }
+        
         
     }
     

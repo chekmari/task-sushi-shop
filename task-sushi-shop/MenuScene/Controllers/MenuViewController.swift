@@ -1,26 +1,25 @@
-//
-//  MenuViewController.swift
-//  task-sushi-shop
-//
-//  Created by macbook on 22.09.2023.
-//
-
 import UIKit
+
+// MARK: - Menu View Controller
 
 class MenuViewController: UIViewController {
     
     // MARK: - UI Elements
     
     private let customNavigationView = CustomNavigationView()
-    private var categoryCollectionView: UICollectionView!
-    private var activityIndicator = UIActivityIndicatorView()
+    private var collectionView: UICollectionView!
+    private var activityIndicator = UIActivityIndicatorView.largeSetup()
     
+    // MARK: - Variables
+    
+    private var selectedCategoryIndex: Int = 0
+    private var headerTitle: [String] = []
     
     // MARK: - Network
     
     private var facade = NetworkFacade()
     private var categoryData: [CategoryList] = []
-    private var subMenuData: [MenuList] = []
+    private var dishData: [MenuList] = []
     
     // MARK: - Life Cycle
 
@@ -28,51 +27,41 @@ class MenuViewController: UIViewController {
         super.viewDidLoad()
         
         setupCollectionView()
-        setupIndicator()
         
         view.backgroundColor = Resources.SetColor.mineShaft()
         view.addView(customNavigationView)
-        view.addView(categoryCollectionView)
-        view.addSubview(activityIndicator)
-        
+        view.addView(activityIndicator)
+        view.addView(collectionView)
         setConstraints()
         
         loadCategory()
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        
     }
     
     // MARK: - Setup Collection View
     
     private func setupCollectionView() {
         
-        categoryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
-        categoryCollectionView.backgroundColor = Resources.SetColor.mineShaft()
-        categoryCollectionView.isScrollEnabled = true
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
+        collectionView.backgroundColor = Resources.SetColor.mineShaft()
+        collectionView.isScrollEnabled = true
+        collectionView.isHidden        = true
         
-        categoryCollectionView.register(                            CategoryCell.self,
+        collectionView.register(                            CategoryCell.self,
                                         forCellWithReuseIdentifier: CategoryCell.idCategoryCell)
-        categoryCollectionView.register(                            SubMenuCell.self,
+        collectionView.register(                            SubMenuCell.self,
                                         forCellWithReuseIdentifier: SubMenuCell.idSubMenuCell)
-        categoryCollectionView.register(                            CategoryHeader.self,
+        collectionView.register(                            CategoryHeader.self,
                                         forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                         withReuseIdentifier:        CategoryHeader.headerId)
         
-        categoryCollectionView.dataSource = self
-        categoryCollectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.delegate   = self
     }
-    
-}
-
-// MARK: Activity Indicator
-
-extension MenuViewController {
-    
-    private func setupIndicator() {
-        activityIndicator.style = .medium
-        activityIndicator.color = .gray
-        activityIndicator.center = view.center
-    }
-    
     
 }
 
@@ -80,15 +69,30 @@ extension MenuViewController {
 
 extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    func selectFirstCategory() {
         
-        if kind == UICollectionView.elementKindSectionHeader && indexPath.section == 1 
+        if selectedCategoryIndex == 0 && categoryData.count > 0 {
+            
+            let indexPath = IndexPath(item: 0, section: 0)
+            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
+            collectionView(collectionView, didSelectItemAt: indexPath)
+            
+        }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, 
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        
+        if kind == UICollectionView.elementKindSectionHeader && indexPath.section == 1
         {
             let header = collectionView.dequeueReusableSupplementaryView(
                 ofKind: kind,
                 withReuseIdentifier: CategoryHeader.headerId,
                 for: indexPath) as!  CategoryHeader
-            
+    
             
             
             return header
@@ -100,11 +104,10 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, 
                         numberOfItemsInSection section: Int) -> Int {
-        
         switch section {
-        case 0:  return categoryData.count
-        case 1:  return 10
-        default: return 0
+        case 0 :  return categoryData.count
+        case 1 :  return dishData.count
+        default:  return 0
         }
     }
     
@@ -115,7 +118,6 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, 
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        
         if indexPath.section == 0 
         {
             let cell = collectionView.dequeueReusableCell(
@@ -124,9 +126,9 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
             
             let category = categoryData[indexPath.item]
             
-            cell.configure(name:  category.name,
-                           count: category.subMenuCount,
-                           image: category.image)
+            cell.configure( name:  category.name,
+                           count:  category.subMenuCount,
+                           image:  category.image)
             
             return cell
     
@@ -136,11 +138,54 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
             withReuseIdentifier: SubMenuCell.idSubMenuCell,
             for: indexPath) as!  SubMenuCell
                 
-            
+            let dish = dishData[indexPath.item]
+        
+            cell.configure(       name: dish.name,
+                           сomposition: dish.content,
+                                  cost: dish.price,
+                                weight: dish.weight,
+                                 spicy: dish.spicy,
+                                 image: dish.image)
             
                 
                 
             return cell
+        }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, 
+                        didSelectItemAt indexPath: IndexPath) {
+        
+        
+        if indexPath.section == 0 {
+            
+            if let cell = collectionView.cellForItem(at: indexPath) as? CategoryCell {
+                
+                
+                let id = categoryData[indexPath.item].menuID
+                DispatchQueue.global(qos: .background).async { self.loadSubMenu(for: id) }
+                
+            }
+            
+            
+            
+        } else if indexPath.section == 1 {
+            
+            
+        }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        
+        if indexPath.section == 0 {
+            
+            
+            
+        } else if indexPath.section == 1 {
+            
+            
         }
         
     }
@@ -161,10 +206,14 @@ extension MenuViewController {
             
         }
         
-        categoryCollectionView.snp.makeConstraints { make in
+        collectionView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(customNavigationView.snp.bottom)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+        
+        activityIndicator.snp.makeConstraints { make in
+            make.centerX.centerY.equalToSuperview()
         }
         
     }
@@ -251,19 +300,49 @@ extension MenuViewController {
         facade.getCategory { categoryData, error in
             
             if let category = categoryData {
+                if category.status { self.categoryData = category.menuList }
                 
                 DispatchQueue.main.async {
-                    if category.status { self.categoryData = category.menuList }
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.isHidden = true
-                    self.categoryCollectionView.reloadData()
+                    self.collectionView.isHidden = false
+                    self.collectionView.reloadData()
+                    self.selectFirstCategory()
                 }
                 
             } else if let error = error {
+                
                 print("Ошибка при загрузке категорий: \(error.localizedDescription)")
+                self.collectionView.isHidden = true
                 self.activityIndicator.startAnimating()
+                self.collectionView.reloadData()
+                
             }
             
         }
+        
+        
     }
+    
+    /// - Load Sub Menu
+    
+    private func loadSubMenu(for id: String) {
+        
+        facade.getDish(for: id) { dishData, error in
+            
+            if let dish = dishData {
+                
+                DispatchQueue.main.async {
+                    if dish.status { self.dishData = dish.menuList }
+                    self.collectionView.reloadData()
+                }
+                
+            } else if let error = error {
+                
+                print("Ошибка при загрузке категорий: \(error.localizedDescription)")
+                
+            }
+        }
+    }
+    
 }

@@ -19,4 +19,10 @@ class CategoryHeader: UICollectionReusableView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+    // MARK: - Configureц
+    
+    public func configure(_ text: String) {
+        label.text = text
+    }
 }

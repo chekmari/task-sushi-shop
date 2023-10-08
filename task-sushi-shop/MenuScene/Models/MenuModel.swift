@@ -3,13 +3,13 @@
 import Foundation
 
 // MARK: - Menu
-struct Menu: Codable {
+struct Dish: Codable {
     let status: Bool
     let menuList: [MenuList]
 }
 
 // MARK: - MenuList
 struct MenuList: Codable {
-    let id, image, name, content, price, weight: String
-    let spicy: String?
+    let id, image, name, content, price: String
+    let weight, spicy: String?
 }

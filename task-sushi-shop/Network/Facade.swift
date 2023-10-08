@@ -1,19 +1,13 @@
-// MARK: -
+// MARK: - id
 
 import Foundation
-
-struct ID {
-    
-    let idMenu: String
-    
-}
 
 // MARK: - Network Facade Protocol
 
 protocol NetworkFacadeProtocol {
     
     func getCategory(completion: @escaping (Category?, Error?) -> Void)
-    func getDish(for idMenu: String, completion: @escaping ([String]?, Error?) -> Void)
+    func getDish(for idMenu: String, completion: @escaping (Dish?, Error?) -> Void)
     
 }
 
@@ -36,13 +30,13 @@ class NetworkFacade: NetworkFacadeProtocol {
         
     }
         
-        func getDish(for idMenu: String, completion: @escaping ([String]?, Error?) -> Void) {
+        func getDish(for idMenu: String, completion: @escaping (Dish?, Error?) -> Void) {
             let parameters = ["menuID": idMenu]
             
             sushusushiAPI.performPOSTrequest(
                 with: Network.URLs.dish.rawValue,
                 parameters: parameters,
-                responseType: [String].self
+                responseType: Dish.self
             )
             {   (dishes, error) in
                 if let dishes = dishes { completion(dishes, nil) } else

@@ -60,7 +60,7 @@ final class CustomStepper: UIControl {
         super.init(frame: frame)
         
         setupViews()
-        setContraints()
+        setConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -81,7 +81,7 @@ final class CustomStepper: UIControl {
 
     }
     
-    private func setContraints() {
+    private func setConstraints() {
         
         horizontalStackView.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(10)
