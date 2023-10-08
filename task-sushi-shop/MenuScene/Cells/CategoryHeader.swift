@@ -20,7 +20,7 @@ class CategoryHeader: UICollectionReusableView {
         super.init(coder: aDecoder)
     }
     
-    // MARK: - Configureц
+    // MARK: - Configure
     
     public func configure(_ text: String) {
         label.text = text

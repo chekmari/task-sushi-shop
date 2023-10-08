@@ -13,7 +13,6 @@ class MenuViewController: UIViewController {
     // MARK: - Variables
     
     private var selectedCategoryIndex: Int = 0
-    private var headerTitle: [String] = []
     
     // MARK: - Network
     
@@ -74,7 +73,7 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
         if selectedCategoryIndex == 0 && categoryData.count > 0 {
             
             let indexPath = IndexPath(item: 0, section: 0)
-            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
+            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
             collectionView(collectionView, didSelectItemAt: indexPath)
             
         }
@@ -104,11 +103,13 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, 
                         numberOfItemsInSection section: Int) -> Int {
+        
         switch section {
         case 0 :  return categoryData.count
         case 1 :  return dishData.count
         default:  return 0
         }
+        
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -146,8 +147,6 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
                                 weight: dish.weight,
                                  spicy: dish.spicy,
                                  image: dish.image)
-            
-                
                 
             return cell
         }
@@ -177,18 +176,7 @@ extension MenuViewController: UICollectionViewDataSource, UICollectionViewDelega
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        
-        if indexPath.section == 0 {
-            
-            
-            
-        } else if indexPath.section == 1 {
-            
-            
-        }
-        
-    }
+    
     
 }
 
